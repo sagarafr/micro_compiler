@@ -6,9 +6,8 @@
 #include	<stdlib.h>
 #include	"cradle.hpp"
 
-Cradle::Cradle(const std::string &filename):file_reading(filename)
-{
-}
+Cradle::Cradle(const std::string &filename):file_reading(filename.c_str()), cara(EOF)
+{}
 
 Cradle::~Cradle()
 {
@@ -19,12 +18,10 @@ Cradle::~Cradle()
 const char Cradle::getChar()
 {
   if (file_reading.is_open())
-    file_reading.get(cara);
-  return cara;
-}
-
-const char Cradle::getCara() const
-{
+  {
+    if ((cara = static_cast<char>(file_reading.get())) == EOF)
+      file_reading.close();
+  }
   return cara;
 }
 

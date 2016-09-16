@@ -15,7 +15,10 @@ public:
   ~Cradle();
 
   const char getChar();
-  inline const char getCara() const;
+  inline const char getCara() const
+  {
+      return cara;
+  };
 
   void match(char c);
 
