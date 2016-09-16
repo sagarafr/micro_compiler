@@ -1,5 +1,6 @@
 #include	<iostream>
 #include	"cradle.hpp"
+#include "math_expression.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -9,6 +10,8 @@ int main(int argc, char *argv[])
   std::string s(argv[1]);
   Cradle c(s);
   while (c.getChar() != EOF)
-    std::cout << c.getCara();
+  {
+    MathExpression::translate(c);
+  }
   return 0;
 }
